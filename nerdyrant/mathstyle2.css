@@ -1,0 +1,74 @@
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Playfair+Display&family=Fira+Code&display=swap');
+
+body {
+  margin: 0;
+  background-color: #1c1c1c;
+  color: #eaeaea;
+  font-family: 'Baskerville', serif;
+  line-height: 1.6;
+  padding: 2rem;
+  font-size:14pt;
+}
+
+h2, h3 {
+  font-family: 'Playfair Display', serif;
+  color: #d4af7f;
+  margin-top: 2rem;
+}
+
+header {
+  background-color: #3c2a1e; /* coffee-brown */
+  padding: 20px 0;
+  text-align: center;
+  border-radius: 5pt;
+}
+
+header h1 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 2em;
+  color: #d4bb8a; /* light tan */
+}
+
+.navbar {
+  margin-top: 15px;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #d4bb8a;
+  margin: 1rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #f0e68c; /* soft hover color */ 
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding-top:50px;
+  font-size: 14pt;
+}
+
+/*main {
+  max-width: 75vw;
+  margin: 4rem auto;
+  padding: 2rem;
+  color: #f0f0f0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}*/
+

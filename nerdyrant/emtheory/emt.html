@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="../mathstyle2.css"/>
+
+  <!-- MathJax for LaTeX -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>Electro-Magnetic Field Theory</h1>
+    <nav class="navbar">
+      <ul>
+        <li><a href="../dsp/dsp.html">  <span class="arrow"> &larr; </span> Previous Rant </a></li>
+        <li><a href="../math.html">  Main Page </a></li>
+        <li><a href="#"> Next Rant <span class="arrow">  &rarr; </span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    Electro-Magnetic Field Theory is an integral part of the syllabus for electrical engineers -- and I unfortunately happen to be one of them. It is the branch of science that deals with how magnetic and electrical fields interact, in nature, and we study them to exploit this behaviour, to transmit information. This is the backbone of wireless communication. As a pre-requisite to this course, I would need to have a firm understanding of a few core-mathematical topics, mainly they are:
+      <ul>
+        <li>Vectors and Vector Calculus - <em>because fields don’t move in straight lines, apparently.</em></li>
+        <li>Differential Equations (especially Partial Differential Equations) - <em>for Maxwell's Equations </em> </li>
+        <li>Computer Modelling and Simulation - <em>a modern must-have for visualizing how electromagnetic fields behave, especially when textbooks give up.</em></li>
+      </ul>
+
+      The bottom one is a recent introduction in this field of study to better visualize and understand the behaviour of Electro-Magnetic fields.
+
+      <h3>Introduction to Vectors</h3>
+      <p>
+      Vectors are quantities that have both magnitude and direction. Vectors have some properties that are relevant in this course:
+      <ol>
+        <li>Vectors can be added.</li>
+        <li>Vectors can be scaled.</li>
+        <li><b>Dot Product</b></li>
+        The result is a scalar. If I have \( \,\, \vec{v} \quad \text{and} \quad \vec{w} \), then <b>dot product = </b> \( |\vec{v}|.|\vec{w}| \, cos(\theta)\)  
+        <li><b>Cross Product</b></li>
+        The result is a vector, and given by, \( \,\,\, |\vec{v}|.|\vec{w}| \, sin(\theta) \) The direction is <b>normal to the plane</b> of both vectors.
+      </ol>
+      The cross product appears in many places. For example, if I have a rectangle, whose sides are <em>'v'</em> and <em>'w'</em>, then the area of the rectanlge would be = \( \,\, v \times w \). This is very easy to understand.</p> 
+
+      <p>
+        <img src="areapara.png" alt="Area of Parallelogram" style="float: right; margin: 10px; width:200px;">
+        But now, assume a parallelogram, who has the same sides, <em>'v'</em> and <em>'w'</em>.... now the area of this parallelogram, will be the area of the rectangle with sides \( \,\, w \,\, \text{and} \,\, v.sin(\theta) \). Interestingly, we find that this result is also the one found in cross-product. $$ \text{Area} = |\vec{v}|.|\vec{w}| \, sin(\theta) $$ This means that area is consequentially a vector quantity, when denoted by two vectors, and it's direction is normal to the surface of the two initial vectors we constructed the figure with. This applies only to flat figures and shapes. But this is not what I'm worried about.</p>                                                                                                                                                                                                                                                                                           
+      <p>The thing that got me worried, was, that if area of a 2D figure, extends normally out, into the 3rd dimension... (which means area exists in a higher dimension than the parent vectors), then can I safely say that the volume of a 3D object would also have a vector quantity in the fourth dimension? Look, I know that is a ridiculous argument, made by my immature brain, owing to my scarce knowledge of higher mathematics. But then I thought to myself, how would that be possible? The fourth dimension is not a physical dimension... it's time, according to Einstein.. I guess! <br> <br> SO THEN WHAT IS IT? I did some digging, (<em>and I'm embarrased to admit this, but I had to consult ChatGPT, cause she's faster..!</em>) I found out that the volume of a 3D object is actually a scalar, and consequently, it cannot <em>extend into a higher dimension</em> like a vector. There is this thing called the <b>Scalar Triple Product</b>, to find the volume of a parallelepiped: $$ V = | \vec{u} \cdot (\vec{v} \times \vec{w}) | $$</p>
+      <p>
+
+      Now this is a scalar -- no direction; no "out of the paper" vibes. It simply represents the 3D space enclosed. So NO, volume wouldn't morph into 4th dimension (I was excited for a moment, my dumbass thought I actually found a loophole!). <br> <br>
+
+      But then I learned that in higher-dimensional math, we can represent volumes as oriented objects, but not as simple vectors. Here, we use things like <b> Wedge Products, Differential Forms,</b> and instead of area vectors and volumes, we have things like <b>2-forms, 3-forms...</b> none of which are relevant for this course. 
+        </p>
+  </main>                                                                            </body>                                                                                                                                                                                                                                    
+</html>
