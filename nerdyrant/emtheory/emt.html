@@ -13,6 +13,19 @@
   <script id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
+    <script>
+window.MathJax = {
+  tex: {
+    packages: ['base', 'ams']  // Enable AMS environments like align, gather
+  },
+  svg: {
+    fontCache: 'global'
+  }
+  output: {
+    output: 'chtml' // Set to 'chtml' for CommonHTML output
+  }
+};
+</script>
 </head>
 
 <body>
@@ -34,7 +47,7 @@
         <li>Computer Modelling and Simulation - <em>a modern must-have for visualizing how electromagnetic fields behave, especially when textbooks give up.</em></li>
       </ul>
 
-      The bottom one is a recent introduction in this field of study to better visualize and understand the behaviour of Electro-Magnetic fields.
+      The bottom one is a recent introduction in this field of study to better visualize and understand the behaviour of Electro-Magnetic fields. <br> <br> In the future, I might include a separate page for each of these topics, but here I will briefly visit these topics for revision that is relevant for this course in particular
 
       <h3>Introduction to Vectors</h3>
       <p>
@@ -45,7 +58,7 @@
         <li><b>Dot Product</b></li>
         The result is a scalar. If I have \( \,\, \vec{v} \quad \text{and} \quad \vec{w} \), then <b>dot product = </b> \( |\vec{v}|.|\vec{w}| \, cos(\theta)\)  
         <li><b>Cross Product</b></li>
-        The result is a vector, and given by, \( \,\,\, |\vec{v}|.|\vec{w}| \, sin(\theta) \) The direction is <b>normal to the plane</b> of both vectors.
+        The result is a vector, and given by, \( \,\,\, |\vec{v}|.|\vec{w}| \, sin(\theta) \) <br> The direction is <b>normal to the plane</b> of both vectors.
       </ol>
       The cross product appears in many places. For example, if I have a rectangle, whose sides are <em>'v'</em> and <em>'w'</em>, then the area of the rectanlge would be = \( \,\, v \times w \). This is very easy to understand.</p> 
 
@@ -59,5 +72,69 @@
 
       But then I learned that in higher-dimensional math, we can represent volumes as oriented objects, but not as simple vectors. Here, we use things like <b> Wedge Products, Differential Forms,</b> and instead of area vectors and volumes, we have things like <b>2-forms, 3-forms...</b> none of which are relevant for this course. 
         </p>
-  </main>                                                                            </body>                                                                                                                                                                                                                                    
+
+      <h3>Coordinate Systems</h3>
+      We can define the orientation and position of a point using vector notation, but we would need to set a co-ordinate system in order to do that. Let us take the example of the vector : \( \vec{A} = 4 \, \hat{x} + 3\, \hat{y} + 2\, \hat{z}\). This is the usual notation we are used to. But WHY is this the most optimum notation used universally? 
+      <br> <br> For a moment, let us define another co-ordiante system, different from the traditional one, where 
+      $$ 
+      \begin{gather*}
+      \vec{u} = \hat{x} \, ; \quad \vec{v} = \hat{x} + \hat{y} \, ; \quad \vec{w} = \hat{x} + \hat{z} \\
+      \text{then,} \quad \quad \hat{y} = \vec{v} - \vec{u} \, ; \quad \hat{z} = \vec{w} - \vec{u} \\
+      \text{so our original vector becomes,} \quad \vec{A} = -\vec{u} + 3 \, \vec{v} + 2\, \vec{w}
+      \end{gather*}
+      $$
+      This is a rather strange result. The reason is that, to construct w and v. you need to move not only in y and z directions, you also move along x aswell. <br> <br> 
+
+      Initially we had 4 units in the x-axis, now, to reach the same position in our new coordinate system, we need to go back \( -\vec{u} \). But the answer is correct mathematically nonetheless. We can verify this by performing dot product on the entire vector \( \vec{A} \) to find the coefficient of a building-vector. Let us find the coefficient of \( \hat{x} \), (<em>evidently it should be 4, from the original vector \( \vec{A} \)</em>) in other words, the coefficient of \( \vec{u} \), 
+      $$
+      \begin{gather*}
+        \vec{A} \cdot \vec{u} = (-\vec{u} + 3 \, \vec{v} + 2\, \vec{w}) \cdot \vec{u} \\
+      \Rightarrow \vec{A} \cdot \vec{u} = -\vec{u}\cdot \vec{u} + 3 \, \vec{v}\cdot \vec{u} + 2\, \vec{w}\cdot \vec{u}
+      \end{gather*}
+      $$
+      Now if you look closely, 
+      $$ \vec{u} \cdot \vec{u} = 1 \, ; \quad \quad \vec{v} \cdot \vec{u} = (\hat{x} + \hat{y}) \cdot \hat{x} = 1 \, ; \quad \quad \vec{w} \cdot \vec{u} = (\hat{x} + \hat{x}) \cdot \hat{x} = 1  $$
+      Hence the final result gives us: $$ \vec{A} \cdot \vec{u} = -1 + 3 + 2 = 4 $$
+
+      What this means for us, is that if we had such a strange co-ordiante system, we couldn't predict ahead of time, how much \( \vec{u}, \, \, \vec{v}\,\, \text{and} \,\,\vec{w} \) we have. For this reason, people have come up with <b>Orthonormal Coordinate Systems.</b>
+
+      <h3>Orthonormal Coordinate Systems</h3>
+      <p>
+        <img src="coordinate3.png" alt="" style="float: right; margin: 10px; width:200px;">
+      In the above example, if we wanted to find out the coefficient of any building vector, we should be able to perform dot product and automatically get the coefficient, which is to say that the remaining dot products should result in zero. 
+      $$ \hat{x} \cdot \hat{y} = 0 \ ; \quad \quad \hat{x} \cdot \hat{z} = 0 \ ; \quad \quad \hat{z} \cdot \hat{y} = 0 $$
+
+        This means that the angles between the vectors should be \( 90^{\circ} \). This is possible in <b>Cartesian Coordinate Systems,</b> which is an orthonormal coordinate system. This is much more convienient , and people generally do not use non-orthonormal co-ordinate systems unless necessary.
+        </p>
+
+
+     <h4>Properties of Orthonormal Coordinate Systems</h4>
+      $$
+  \begin{gather*}
+        \hat{x} \cdot \hat{x} = 1 \ ; \quad \quad \hat{x} \cdot \hat{y} = 0 \ ; \quad \quad \hat{x} \cdot \hat{z} = 0 \\
+      \hat{y} \cdot \hat{x} = 0 \ ; \quad \quad \hat{y} \cdot \hat{y} = 1 \ ; \quad \quad \hat{y} \cdot \hat{z} = 0  \\
+      \hat{z} \cdot \hat{x} = 0 \ ; \quad \quad \hat{z} \cdot \hat{y} = 0 \ ; \quad \quad \hat{z} \cdot \hat{z} = 1
+      \end{gather*}
+      $$
+    So to define an orthonormal system, we can do it as follows,
+      $$
+      \left[ \vec{e}_i \right]_{i = 1}^{N} = 
+      \begin{cases}
+      1 \quad \quad \text{if} \quad i = j \\
+          0 \quad \quad \text{if} \quad i \neq j
+      \end{cases}
+      $$
+
+      There are other coordinate systems, and we can define some ourselves, so long as they satisfy the necessary critera. For example, if I rotate the x, y, x axes about an axis -- I will still get an orthonormal system. Take the below system for example:
+      $$
+    \begin{gather*}
+      \hat{x} \rightarrow \frac{\hat{x} + \hat{y}}{\sqrt{2}} \, ; \quad \quad \hat{y} \rightarrow \frac{\hat{x} - \hat{y}}{\sqrt{2}} \, ; \quad \quad \hat{z}\rightarrow \hat{z}
+      \end{gather*}
+      $$
+
+      If you apply the above conditions, you will find that this system also fits as an orthonormal system. This is nothing but rotation of the cartesian system, about the z-axis, by \( 45^{\circ} \).
+
+  </main>                                                 
+
+</body>                                                                                                                                                                                                                                    
 </html>

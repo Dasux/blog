@@ -16,7 +16,12 @@ h2, h3 {
   color: #d4af7f;
   margin-top: 2rem;
 }
-
+h4 {
+  font-family: 'Playfair Display', serif;
+  color: #d4af7f;
+  margin-top: 2rem;
+  font-style: italic;
+}
 header {
   background-color: #3c2a1e; /* coffee-brown */
   padding: 20px 0;
@@ -57,7 +62,7 @@ header h1 {
 }
 
 main {
-  max-width: 900px;
+  max-width: 2000px;
   margin: auto;
   padding-top:50px;
   font-size: 14pt;
