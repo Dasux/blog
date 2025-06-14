@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="../mathstyle2.css"/>
+
+  <!-- MathJax for LaTeX -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+     <script>
+window.MathJax = {
+  tex: {
+    packages: ['base', 'ams'],  // Enable AMS environments like align, gather
+    inlineMath: [['$$', '$$']], // set $$...$$ for inline math
+    displayMath: [['\\[', '\\]']],
+    tags: 'all'// optional: keep default for display math
+  },
+  svg: {
+    fontCache: 'global'
+  }
+  
+   options: {
+  enableMenu: false
+}
+      
+};
+</script>
+     <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+</head>
+
+<body>
+  <header>
+    <h1>Fourier Series</h1>
+      <h5>and Integral Transforms</h5>
+    <nav class="navbar">
+      <ul>
+        <li><a href="../emtheory/emt.html">  <span class="arrow"> &larr; </span> Previous Rant </a></li>
+        <li><a href="../math.html">  Main Page </a></li>
+        <li><a href="#"> Next Rant <span class="arrow">  &rarr; </span></a></li>
+      </ul>
+    </nav>
+  </header>
+    <main> <h2>Introduction</h2>
+      <p>Fourier Series was introduced in 1807 by Fourier after work by Euler and Daniel Bernoulli. It is very useful in conduction, mechanics, concentrations of chemicals and pollutants... but most importantly for me as an electronics major, it is used religiously in Digital Signal Processing. This course is a pre-requisite to digital signal processing and I recommend doing this first before even proceeding to begin DSP. <br> <br> That being said, in this page, I will briefly discuss all conditions in which the fourier series can exist for a function, and following that, I will cover <b>Fourier Integral Transforms</b> as well. Most of this is just textbook material, I've included them here as a short notes, as a <em>second-brain</em> as they call it. You can skip to the main </p>
+
+     
+      <h3>Periodic Function</h3>
+      A function f(x) is periodic if f(x+T) = f(x) for all real values x and some positive number <em>T</em>. <em>T</em> is known as the period of f(x).
+
+      <h3>Fundamental Period</h3>
+      The smallest possible period of f(x) is the fundamental period of the function.That being said, there are a few results we must keep in mind:
+      <ul>
+        <li><h5>Result 1</h5> &rarr;  If T is the period of f(x), then <em>nT</em> is also a period $$ f(x+nT) = f(x) \quad \quad (n \neq 0) $$</li>
+        <li><h5>Result 2</h5> &rarr; The function \( h(x) = a f(x) + bg(x) \) has period T if f(x) and g(x) have period T. </li>
+        <li><h5>Result 3</h5> &rarr; If f(x) is a periodic function of period T, then f(ax) is also periodic with period \( \frac{T}{a} \)</li>
+        <li><h5>Result 4</h5> &rarr; The period of a sum of a no. of periodic functions is the LCM of the periods. </li>
+        <li><h5>Result 5</h5> &rarr; A constant function is periodic for any +ve T. </li>
+        <h4>Trigonometric Series</h4>
+          $$ \frac{a_0}{2} + \sum_{n = 1}^{\infty} [a_n \, cos(nx) + b_n \, sin(nx)] $$ where the constants \( a_0, a_n, b_n \, \, (n=1, 2, ...) \quad \)are the coefficients. <br> <br> Physically, this means that any periodic function or signal can be decomposed into a sum of sinusoidal functions — sines and cosines — each scaled appropriately and occurring at harmonic frequencies of the fundamental. These harmonics, when added together, reconstruct the original signal. <br>
+
+        <li><h5>Result 6</h5> &rarr; Let <em>n, m</em> be integers, and \( n \neq 0, m \neq 0 \)<br>For \( m \neq n \) 
+          <ol type="a">
+            <li> \( \int_{\alpha}^{\alpha + 2 \pi} cos(mx) \cdot cos(nx) \, dx  = 0\) </li>
+            <li> \( \int_{\alpha}^{\alpha + 2 \pi} sin(mx) \cdot sin(nx) \, dx  = 0\) </li>
+            <li> \( \int_{\alpha}^{\alpha + 2 \pi} sin(mx) \cdot cos(nx) \, dx  = 0\)  </li>
+            <li> \( \int_{\alpha}^{\alpha + 2 \pi} cos(mx) \, dx  = 0\) </li>
+            <li> \( \int_{\alpha}^{\alpha + 2 \pi} sin(mx) \, dx = 0\)  </li>
+          </ol>
+          <br>
+          For \( m=n \)
+          <ol type="a">
+            
+            <li> \( \int_{\alpha}^{\alpha + 2 \pi} cos(mx) \cdot cos(nx) \, dx = \int_{\alpha}^{\alpha + 2 \pi} cos^{2}(mx) \, dx = \pi \) </li>
+            <li>\( \int_{\alpha}^{\alpha + 2 \pi} sin^{2}(mx)\, dx = \pi \)</li>
+            <li>\( \int_{\alpha}^{\alpha + 2 \pi} cos(mx) \cdot sin(mx)\, dx = 0 \)</li>
+          </ol>
+        </li>
+      </ul>
+
+      <h3>Fourier-Euler Formulae</h3>
+      Fourier and Euler said that if we have a function f(x) that is periodic with period \( 2\pi \) in the interval \( \, \, (\alpha, \, \,\alpha + 2x) \, \, \), then we can re-write the function as a Trigonometric Series:
+      $$ 
+      \begin{align}
+      f(x) &= \frac{a_0}{2} + \sum_{n = 1}^{\infty} [a_n \, cos(nx) + b_n \, sin(nx)]
+      \end{align}
+      $$
+      where,
+      $$
+      \begin{gather}
+      a_0 = \frac{1}{\pi} \int_{\alpha}^{\alpha + 2\pi} f(x) \, dx \\
+      a_n = \frac{1}{\pi} \int_{\alpha}^{\alpha + 2\pi} f(x) \cdot cos(nx) \, dx \\
+      b_n = \frac{1}{\pi} \int_{\alpha}^{\alpha + 2\pi} f(x) \cdot sin(nx) \, dx 
+      \end{gather}
+      $$
+
+      All that is just bookish tho.... I've never really understood what it meant physically. Let us try and get a better <em>"feel"</em> of whats happening here. We said that any periodic function, with period 2L can be expanded into the following Trigonometric series. What it means is... in good faith... that any periodic signal can be disintegrated into a series/ layers of sine and cosine waveforms. ANYTHING for that matter! That is what Fourier claimed. <br> <br>
+
+      So according to him (Fourier) if I have any arbitrary function... even noise.... if it is periodic... i can decompose it into sine and cosine terms, with an initial DC term called \(a_0\). The coefficients of the cosine and sine terms, from the definition might look like they're the <em>areas under the curves</em>.... but NO! That was a misconception I had earlier. We are interested in knowing <b>how much contribution does the sin/ cosine term have</b> in the original signal. We can find that out by doing a mathematical projection. In mathematics, the most sophisticated way to do that is using an integral, hence the integration. It isn't area,---- it is <b>signed area</b> --- the overlap of two waveforms. So when I say $$ a_n = \frac{1}{\pi} \, \int \, f(x) \, cos(nx) \, dx $$ it is not just area --- it is the <b>correlation</b> between your function and cos(nx). 
+      <ul>
+        <li>if the wave aligns perfectly &rarr; large positive value</li>
+        <li>if it anti-aligns &rarr; negative</li>
+        <li>if they cancel out over time &rarr; near zero</li>
+      </ul> 
+      The final coefficients multiplied, are just to show how strong each frequency is present. We decompose, scale them using the coefficients, and add them up to form the entire signal. Physically this is the best explanation I can come up with. I hope it makes sense to anyone other than me reading this.
+
+      <h4>Drichilet Conditions</h4>                                                                                                                                                                                                                               k
+      Let f(x) be a periodic function with period \(2\pi\), and let it be piecewise continuous and bounded in the interval \( (\alpha, \alpha + 2\pi) \), it has finite no. of extremas. Now, at points of continuity, it will converge to the RHS of the Trigonometric series f(x). <br> <br>
+
+      At points of discontinuity, f(x) converges to the arithmetic means of RHL and LHL at \( x_0 \) $$ f(x_0) = \frac{1}{2} \, [ f(x_0 - 0) + f(x_0  + 0)] $$
+
+      <h4>Fourier Series for EVEN and ODD Functions</h4>
+      Suppose f(x) is a periodic function with period \(\,\,\, 2\pi \,\,\, \text{defined in the interval} \,\, (-\pi, \,\, \pi)\). <br> 
+      <h5>EVEN</h5> &rarr; a function is even if \(\quad  f(x) = f(-x) \quad \forall \, x. \quad\) On that note, the fourier series will include only the cosine terms, and we'll have a <b>Fourier Cosine Series</b>:  
+      $$ 
+      \begin{gather}
+      f(x) = \frac{a_0}{2} + \sum_{n = 1}^{\infty} \, a_n \, cos(nx) \\\\
+       a_0 = \frac{2}{\pi} \int_{0}^{\pi} f(x) \, dx \\
+      a_n = \frac{2}{\pi} \int_{0}^{\pi} f(x) \cdot cos(nx) \, dx 
+      \end{gather}
+      $$
+
+      <h5>ODD</h5> &rarr; a function is even if \(\quad  f(x) = - f(-x) \quad \forall \, x. \quad\) On that note, the fourier series will include only the sine terms, and we'll have a <b>Fourier Sine Series</b>:     
+      $$
+      \begin{gather}
+      f(x) = \sum_{n = 1}^{\infty} \, b_n \, sin(nx) \\\\
+      b_n = \frac{2}{\pi} \int_{0}^{\pi} f(x) \cdot sin(nx) \, dx
+      \end{gather}
+      $$
+
+      <h3>Fourier Series with Period 2L</h3>
+      We will define a function f(x) with arbitrary period 2L defined in the interval \( \,\, c < x < c + 2L \), and we'll introduce a new variable 'z' as \( \,\, \frac{x}{2L} = \frac{z}{2 \pi} \quad or \quad x = \frac{Lz}{\pi} \quad or \quad z = \frac{\pi x}{L} \). Then our fourier series becomes 
+        $$
+        \begin{gather}
+        f(x) = f(\frac{L z}{\pi}) = F(z) \\\\
+        f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} [a_n \cdot cos(\frac{n \pi x}{L}) + b_n \cdot sin(\frac{n \pi x}{L})] \\
+        a_0 = \frac{1}{L} \int_{c}^{c + 2L} f(x) \, dx \\
+        a_n = \frac{1}{L} \int_{c}^{c + 2L} f(x) \cdot cos(\frac{n \pi x}{L}) \, dx \\
+        b_n = \frac{1}{L} \int_{c}^{c + 2L} f(x) \cdot sin(\frac{n \pi x}{L}) \, dx
+        \end{gather}
+        $$
+
+        <h4>FS for EVEN and ODD functions</h4>
+        Defined in the interval (-L, L) of length 2L. <br>
+        <h5>EVEN</h5> &rarr; <b>Fourier Cosine Series</b> 
+        $$ 
+      \begin{gather}
+        f(x) = \frac{a_0}{2} + \sum_{n = 1}^{\infty} \, a_n \, cos(\frac{n \pi x}{L}) \\\\
+       a_0 = \frac{2}{\pi} \int_{0}^{\pi} f(x) \, dx \\
+      a_n = \frac{2}{\pi} \int_{0}^{\pi} f(x) \cdot cos(\frac{n \pi x}{L}) \, dx 
+      \end{gather}
+      $$
+
+      <h5>ODD</h5> &rarr; <b>Fourier Sine Series</b> 
+        $$
+        \begin{gather*}
+        f(x) = \sum_{n=1}^{\infty} \,  b_n \, sin(\frac{n \pi x}{L}) \\\\
+        b_n = \frac{2}{\pi} \int_{0}^{\pi} \, f(x) \cdot sin(\frac{n \pi x}{L}) \, dx
+        \end{gather*}
+        $$
+
+        <h4>Hlaf-Range Expansions: Fourier Cosine and Sine Series</h4>
+        Up until this point we have considered the fourier series of a periodic function who was defined in an interval c to c+2L of length 2L. Now, what if I wanna find the fourier series of a non-period function that is also defined in half of the interval,... like (0, L). Now what? Fortunately, we can do this by expanding the fourier series to make it appear as a full range function.... such expansions are known as <b>half range Fourier expansions.</b> Keep in mind that we're doing this when the function f(x) is neighter periodic nor even nor odd. <br> <br>
+
+        To find the <b>Fourier Cosine series</b> for f(x), we will redefine another function g(x), expanding it in the interval (-L, 0) such that it is EVEN in the interval (-L, L).
+        $$ g(x) = 
+        \begin{cases}
+        f(x) \quad \quad \quad \text{for} \quad x \in (0, L) \\
+        f(-x) \quad \quad \text{for} \quad x \in (-L, 0)
+        \end{cases}$$
+        Now g(x) is periodic in the interval (-L, L) with period 2L, and the fourier series is obtained as 
+        $$ \begin{gather}
+        g(x) = \frac{a_0}{2} + \sum_{n = 1}^{\infty} \, a_n \, cos(\frac{n \pi x}{L}) \\\\
+       a_0 = \frac{2}{L} \int_{0}^{L} g(x) \, dx \\
+      a_n = \frac{2}{L} \int_{0}^{L} g(x) \cdot cos(\frac{n \pi x}{L}) \, dx 
+      \end{gather}
+$$
+        <hr>
+
+ To find the <b>Fourier Sine series</b> for f(x), we will redefine a function g(x), expanding it in the interval (-L, 0) such that it is ODD in the interval (-L, L).
+        $$ g(x) = 
+        \begin{cases}
+        f(x) \quad \quad \quad \text{for} \quad x \in (0, L) \\
+        -f(-x) \quad \quad \text{for} \quad x \in (-L, 0)
+        \end{cases}$$
+        Now g(x) is periodic in the interval (-L, L) with period 2L, and the fourier series is obtained as 
+        $$ \begin{gather}
+        g(x) = \sum_{n=1}^{\infty} \,  b_n \, sin(\frac{n \pi x}{L}) \\\\
+        b_n = \frac{2}{L} \int_{0}^{L} g(x) \cdot sin(\frac{n \pi x}{L}) \, dx 
+      \end{gather}
+$$
+
+        One important thing to keep in mind is that the series expansions given above, are valid only for the interval (0,L) and not beyond this. This is because in other side of the plane... (-L, 0) the functions are defined differently... f(-x) is being considered, which is not the same as f(x). <br> <br>
+
+        Upon expanding the function that was originally defined in (0, L) to (-L, 0)... we can see that it will be a periodic function with period 2L. It will be even for cosine series, and odd for sine series. The graphs will look like follows:
+
+
+        <h3>Practical Harmonic Analysis</h3>
+        In real life, you don't always have a perfect formula to define real-life signals (electrical waveforms, vibrations etc.) and you still need to analyze it somehow. When <em>f(x)</em> is given in analytical form, then we can directly evaluate the integrals and the fourier coefficients can be found directly. But what if the data is given in tabular form? In such cases, practical harmonic analysis can be used to find the fourier coeffients and harmonics at each frequency value.  <br> <br>
+        
+        Harmonic analysis is the theory of expanding a given function in fourier series. Here is how it works in brief:
+        we divide the total interal \( (-\pi, \pi) \) into <em>n</em> equal parts with (n+1) points $$ -\pi = x_0, x_1, x_2, \cdots , x_n = \pi$$
+        then we'll have subinterval size \(h = \frac{\pi - (-\pi)}{n} = \frac{2\pi}{n} \,\,\, \). Basically what I'm saying in layman terms is that... you have a function that is sampled over all those points above, equally spaced by the given subinterval height, in one period.. and that looks like: $$ f(x_0), f(x_1), f(x_2), \cdots , f(x_n) $$ Let \( y_i = f(x_i) \quad \text{for} \,\, i = 0, 1, 2, \cdots, n \,\,\, \) 
+
+    </main>
+                                                                             
+    </body>

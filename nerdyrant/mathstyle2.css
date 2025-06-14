@@ -22,6 +22,16 @@ h4 {
   margin-top: 2rem;
   font-style: italic;
 }
+h5, .h5{
+  font-family: 'Playfair Display', serif;
+  color: #d4af7f;
+  margin-top: 2rem;
+  font-style: italic;
+  display: inline;
+  font-size:1.25rem;
+}
+
+
 header {
   background-color: #3c2a1e; /* coffee-brown */
   padding: 20px 0;
