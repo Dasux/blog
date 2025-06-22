@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nerdy Rant</title>
+  <link rel="stylesheet" href="../mathstyle2.css"/>
+
+  <!-- MathJax for LaTeX -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+     <script>
+window.MathJax = {
+  tex: {
+    packages: ['base', 'ams'],  // Enable AMS environments like align, gather
+    inlineMath: [['$$', '$$']], // set $$...$$ for inline math
+    displayMath: [['\\[', '\\]']],
+    tags: 'all'// optional: keep default for display math
+  },
+  svg: {
+    fontCache: 'global'
+  }
+  
+   options: {
+  enableMenu: false
+}
+      
+};
+</script>
+     <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+    <style>
+    .highlight {
+      background-color: #ffffcc;
+      padding: 6px;
+      border-left: 4px solid #ffeb3b;
+      margin: 12px 0;
+    }
+    </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>Linear Algebra</h1>
+      <h5>Optimizing Cofactor Calculation in Matrices</h5>
+    <nav class="navbar">
+      <ul>
+        <li><a href="../vectors/vector.html">  <span class="arrow"> &larr; </span> Previous Rant </a></li>
+        <li><a href="../math.html">  Main Page </a></li>
+        <li><a href="#"> Next Rant <span class="arrow">  &rarr; </span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <main>
+      
+    
+    <p>
+      A matrix is a rectangular array of \(m \times n\) numbers, arranged in m-rows and n-columns. Elements of a matrix are located by the double subscript <em>ij</em>... i means rows, j means columns. A matrix of size \( m \times n \) is given as, $$ A = [a_{ij}]_{i,j = 1}^{m,n} $$
+
+      If m = n, then it is a square matrix. What I'm interested in is a special way to find the adjoint of a matrix. Earlier I knew of only one method, and that was tedious... using the cofactor-method. But that method is extremly lengthy for larger dimensions that go beyond 3x3. Let me define the adjoint, 
+      $$
+      adj(\mathrm{A}) = \left[
+      \begin{matrix}
+      C_{11} & C_{12} & C_{13} \\
+      C_{21} & C_{22} & C_{23} \\
+      C_{31} & C_{32} & C_{33} 
+      \end{matrix}
+      \right]^{\intercal}
+      $$
+      the elements \(C_{ij}\) are called cofactors... and they are defined as signed Minors. The \(\,\, \intercal\,\,\) symbol denotes <b>transpose.</b> $$ C_{ij} = (-1)^{i + j} \, M_{ij} $$
+      Minors again, are obtained by taking the determinant of the \( (n-1)^{th} \) square matrix, by deleting the \(i^{th} \,\, \text{row &} \,\, j^{th} \,\, \text{column}\). Let us take an example matrix for instance 
+      $$
+      \text{E} = 
+      \begin{bmatrix}
+        2 & 3 & 4 \\
+      4 &3 &1 \\
+      1 &2& 4
+      \end{bmatrix}
+      $$
+
+      Then the minor at position (1,1) will be given as, 
+      $$
+        M_{11} = 2 \cdot 
+      \begin{vmatrix}
+        3 & 1 \\
+        2 & 4
+      \end{vmatrix}
+      $$
+     
+      <p>I think you can already see the problem here. This becomes really lengthy when the size of the matrix exceeds 3x3... to tackle this problem, I've come to learn another method (this was unknown to me as alternate methods aren't taught at school or university level). </p> 
+
+      <p>So, apparently you can just cross multiply the rows, treating them as vectors, and then again converting the resulting vector into a row. I'll elaborate, let us consider a matrix A,
+      $$
+        A = 
+      \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+      a_{21} & a_{22} & a_{23} \\
+      a_{31} & a_{32} & a_{33} 
+      \end{bmatrix}
+      $$
+
+      then the adjoint can be directly found by,
+      $$
+        adj(\mathrm{A}) = \left[
+      \begin{matrix}
+        \text{row}_2 \times \text{row}_3 \\
+      \text{row}_3 \times \text{row}_1 \\
+      \text{row}_1 \times \text{row}_2
+      \end{matrix}
+      \right]^{\intercal}
+      $$
+
+      Again, we'll take an example to understand. Consider our original matrix E, we'll treat each row as a vector.
+       \begin{gather*}
+      \vec{r_1} = (2 \quad 3 \quad 4); \quad \vec{r_2} = (4\quad3\quad1); \quad \vec{r_3} = (1\quad2\quad4) \\
+       \quad= 2\hat{i} + 3\hat{j} + 4\hat{k}; \quad  \,\,\, = 4\hat{i} + 3\hat{j} + 1\hat{k}; \quad \,\,\, = 1\hat{i} + 2\hat{j} + 4\hat{k}\\\\
+        \text{Now we do the vector cross product of rows (2) and (3),} \\
+        \vec{r_2} \times \vec{r_3} = 
+        \begin{bmatrix}
+         i & j & k \\
+        4 & 3 & 1 \\
+        1 & 2 & 4
+        \end{bmatrix}
+         = (10 \quad -15 \quad 5) \\\\
+        \text{if you continue this for other rows aswell,}\\
+        \vec{r_3} \times \vec{r_1} = (-4 \quad 2 \quad -1); \quad \quad \vec{r_1} \times \vec{r_2} = (-9 \quad 14 \quad -6) \\\\
+        \text{so we finally take the transpose of this matrix,}\\
+        \left[ \begin{matrix}
+          10 & -15 & 5 \\
+        -4 & 2 & -1 \\
+        -9 & 14 & -6
+        \end{matrix} \right]^{\intercal}\\
+        \Rightarrow adj(\mathrm{E})\quad  = \quad
+        \begin{bmatrix}
+          10 & 4 & -9 \\
+        -15 & 2 & 14 \\
+        -5 & -1 & -6
+        \end{bmatrix}
+        \end{gather*}   
+
+        This might look like a really long method, but I've done both calculations, and this is faster for me. Ofcourse, if you have the liberty of exploiting computational power, then it's a different thing. Softwares like MATLAB and other programming languages offer alternatives to finding the adjoint and inverse of matrices without needing to compute the cofactors, but we're interested in doing this for competitive entrance exams, where computation isnt an option.
+        
+    </p> 
+    </main>
+                                                                            
+    </body>
+

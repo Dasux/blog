@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nerdy Rant</title>
+  <link rel="stylesheet" href="../mathstyle2.css"/>
+
+  <!-- MathJax for LaTeX -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+     <script>
+window.MathJax = {
+  tex: {
+    packages: ['base', 'ams'],  // Enable AMS environments like align, gather
+    inlineMath: [['$$', '$$']], // set $$...$$ for inline math
+    displayMath: [['\\[', '\\]']],
+    tags: 'all'// optional: keep default for display math
+  },
+  svg: {
+    fontCache: 'global'
+  }
+  
+   options: {
+  enableMenu: false
+}
+      
+};
+</script>
+     <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+    <style>
+    .highlight {
+      background-color: #ffffcc;
+      padding: 6px;
+      border-left: 4px solid #ffeb3b;
+      margin: 12px 0;
+    }
+    </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>Vector Fields</h1>
+      <h5>and Vector Calculus</h5>
+    <nav class="navbar">
+      <ul>
+        <li><a href="../fourier/fourier.html">  <span class="arrow"> &larr; </span> Previous Rant </a></li>
+        <li><a href="../math.html">  Main Page </a></li>
+        <li><a href="../la/matrix.html"> Next Rant <span class="arrow">  &rarr; </span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <main>
+
+      <p>
+            I came across a question that shook my foundational concepts in vectors. This involved the use of cencepts like linear independence and collinearity. Check out this question below: <br> <br>
+
+        <b>Question:</b> Prove that the vectors \(\,\,\, \vec{a} = 3i + j - 2k, \vec{b} = -i + 3j + 4k, \vec{c} = 4i - 2j - 6k \,\,\, \) can form the sides of a triangle. Find lengths of the medians of the triangle. 
+      </p>
+
+      <p>This is an example question from the book <b>Higher Engineering Mathematics</b> by B.V. Ramana. The question asks us to check if the given vectors can form the sides of a triangle or not.  A vector can be used to define points in a coordinate system, but they can also just be vectors --- lines with a direction. In this case, they were just lines, and so the question meant --- <em>use the vectors to form a triangle.</em> <br> <br> My first intuition was to prove somehow, that the sum of adjacent sides of a triangle must be greater than the other side.</p>
+    </main>
+    
+    </body>
