@@ -1,87 +1,191 @@
 /* styles.css */
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #121212;
-  color: #E0E0E0;
-  line-height: 1.6;
+:root {
+  --bg: #0f1115;
+  --panel: #16181d;
+  --text-main: #cfd6cf;
+  --text-dim: #8b948b;
+  --accent: #24FF30;
+  --accent-soft: #5fae9a;
+  --accent-alt: #8aa2ff;
 }
+
 html, body {
   height: 100%;
   margin: 0;
+}
+
+body {
   display: flex;
   flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text-main);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* ================= HEADER ================= */
+
 header {
-  padding: 2rem;
-  text-align: center;
-  background-color: #1E1E1E;
+  padding: 3rem 4rem 2.5rem;
+  background-color: var(--panel);
   border-bottom: 1px solid #2A2A2A;
 }
 
 .title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 2rem;
-  color: #A66DD4;
-  margin-bottom: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 nav a {
-  color: #7FFFD4;
-  margin: 0 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  font-family: 'IBM Plex Mono', monospace;
-  transition: all 0.3s ease;
+  color: var(--accent-soft);
+  opacity: 0.7;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+  border-bottom: 1px solid transparent;
 }
 
 nav a:hover {
-  text-shadow: 0 0 5px #7FFFD4;
+  opacity: 1;
+  border-bottom: 1px solid var(--accent);
 }
 
-main {
-  max-width: 800px;
-  margin: 3rem auto;
-  padding: 0 2rem;
-}
-
-h2 {
-  font-family: 'Space Grotesk', sans-serif;
-  color: #60AFFF;
-}
-
-p {
-  font-size: 1rem;
-}
-
-pre {
-  background-color: #1E1E1E;
-  padding: 1rem;
-  border: 1px solid #2A2A2A;
-  overflow-x: auto;
-  font-family: 'JetBrains Mono', monospace;
-  color: #E0E0E0;
-  border-radius: 0.5rem;
-}
+/* ================= MAIN ================= */
 
 main {
   flex: 1;
+  max-width: 1200px;
+  margin: 6rem auto;
+  padding: 0 4rem;
 }
+
+/* ================= INTRO ================= */
+
+.intro h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3.4rem;
+  line-height: 1.05;
+  margin: 0 0 2rem 0;
+  max-width: none;                 /* BREAKS THE BOX */
+}
+
+.intro h2::after {
+  content: "—";
+  display: block;
+  margin-top: 1rem;
+  color: var(--accent-alt);
+}
+
+.intro-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  gap: 6rem;                        /* KEY FIX */
+  align-items: start;
+}
+
+.intro-text {
+  max-width: 620px;                 /* READABLE, NOT BOXED */
+}
+
+.intro-text p {
+  color: var(--text-dim);
+  margin-bottom: 1.4rem;
+}
+
+/* ================= IMAGE ================= */
+
+.intro-image {
+  justify-self: end;
+}
+
+.intro-image img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 14px;
+  filter: grayscale(100%) contrast(1.1);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.intro-image img:hover {
+  filter: grayscale(0%);
+  transform: translateY(-6px) rotate(-1deg);
+}
+
+/* ================= CODE ================= */
+
+pre {
+  background-color: var(--panel);
+  padding: 1.2rem;
+  border: 1px solid #2A2A2A;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-main);
+  border-radius: 0.6rem;
+}
+
+/* ================= FOOTER ================= */
 
 footer {
   text-align: center;
   padding: 2rem;
   border-top: 1px solid #2A2A2A;
   font-family: 'EB Garamond', serif;
-  color: #A66DD4;
-  background-color: #1E1E1E;
-  margin-top: 4rem;
+  color: var(--text-dim);
+  background-color: var(--panel);
 }
 
-@media (max-width: 600px) {
-  nav a {
-    display: block;
-    margin: 0.5rem 0;
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  main {
+    padding: 0 2rem;
+  }
+
+  .intro-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .intro-image {
+    justify-self: start;
+  }
+}
+
+.cmd {
+  color: #01826A;
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1.2em;
+  background-color: var(--accent);
+  margin-left: 0.2ch;
+  transform: translateY(0.15em);
+  animation: blink 1.1s steps(1) infinite;
+  mix-blend-mode: difference;
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
   }
 }
 
