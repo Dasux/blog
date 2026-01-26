@@ -1,4 +1,4 @@
-/* styles.css */
+/* styles.css - Updated with subtle starry sky background */
 
 :root {
   --bg: #0f1115;
@@ -8,29 +8,91 @@
   --accent: #24FF30;
   --accent-soft: #5fae9a;
   --accent-alt: #8aa2ff;
+  --star-color: rgba(255, 255, 255, 0.6);
 }
 
 html, body {
   height: 100%;
   margin: 0;
+  position: relative; /* For starry positioning */
+  overflow-x: hidden;
 }
 
 body {
   display: flex;
   flex-direction: column;
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg);
+  background: 
+    radial-gradient(ellipse at bottom, #1b2735 0%, var(--bg) 70%), /* Subtle space gradient */
+    var(--bg);
   color: var(--text-main);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ================= HEADER ================= */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 40px 70px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 90px 40px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 130px 80px, var(--star-color), transparent),
+    /* Add 50-100 more similar patterns for density */
+    radial-gradient(2px 2px at 160px 30px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 200px 120px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 240px 10px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 280px 90px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 320px 50px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 360px 110px, var(--star-color), transparent);
+  background-repeat: repeat;
+  background-size: 400px 200px;
+  opacity: 0.5;
+  z-index: -2;
+  animation: drift 60s linear infinite;
+  pointer-events: none;
+}
 
+@keyframes drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100px); }
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    radial-gradient(1px 1px at 50px 20px, var(--star-color), transparent),
+    radial-gradient(1px 1px at 80px 90px, var(--star-color), transparent),
+    radial-gradient(2px 2px at 110px 60px, var(--star-color), transparent);
+  background-repeat: repeat;
+  background-size: 300px 150px;
+  opacity: 0.3;
+  z-index: -1;
+  animation: twinkle 3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+/* ================= HEADER ================= */
 header {
   padding: 3rem 4rem 2.5rem;
   background-color: var(--panel);
   border-bottom: 1px solid #2A2A2A;
+  position: relative;
+  z-index: 10;
 }
 
 .title {
@@ -65,22 +127,22 @@ nav a:hover {
 }
 
 /* ================= MAIN ================= */
-
 main {
   flex: 1;
   max-width: 1200px;
   margin: 6rem auto;
   padding: 0 4rem;
+  position: relative;
+  z-index: 10;
 }
 
 /* ================= INTRO ================= */
-
 .intro h2 {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 3.4rem;
   line-height: 1.05;
   margin: 0 0 2rem 0;
-  max-width: none;                 /* BREAKS THE BOX */
+  max-width: none;
 }
 
 .intro h2::after {
@@ -93,12 +155,12 @@ main {
 .intro-container {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
-  gap: 6rem;                        /* KEY FIX */
+  gap: 6rem;
   align-items: start;
 }
 
 .intro-text {
-  max-width: 620px;                 /* READABLE, NOT BOXED */
+  max-width: 620px;
 }
 
 .intro-text p {
@@ -107,7 +169,6 @@ main {
 }
 
 /* ================= IMAGE ================= */
-
 .intro-image {
   justify-self: end;
 }
@@ -126,7 +187,6 @@ main {
 }
 
 /* ================= CODE ================= */
-
 pre {
   background-color: var(--panel);
   padding: 1.2rem;
@@ -138,7 +198,6 @@ pre {
 }
 
 /* ================= FOOTER ================= */
-
 footer {
   text-align: center;
   padding: 2rem;
@@ -146,10 +205,11 @@ footer {
   font-family: 'EB Garamond', serif;
   color: var(--text-dim);
   background-color: var(--panel);
+  position: relative;
+  z-index: 10;
 }
 
 /* ================= MOBILE ================= */
-
 @media (max-width: 768px) {
   main {
     padding: 0 2rem;
@@ -162,6 +222,11 @@ footer {
 
   .intro-image {
     justify-self: start;
+  }
+
+  body::before,
+  body::after {
+    background-size: 200px 100px; /* Smaller starfield on mobile */
   }
 }
 
@@ -188,4 +253,3 @@ footer {
     opacity: 0;
   }
 }
-
