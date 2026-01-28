@@ -1,55 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shitposting 404</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=IBM+Plex+Mono&family=Inter&family=JetBrains+Mono&family=Space+Grotesk&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    
-<h1 class="title">
-  root@anirban $~ <span class="cmd">ls</span><span class="cursor"> </span>
-</h1>
- 
+    <!-- Navigation -->
     <nav class="navbar">
-      <a href="index.html">/home</a>
-      <a href="journal/logbook.html">/logbook</a>
-      <a href="clarity/clarity.html">/journal</a>
-      <a href="#">/stuff_i_built</a>
-        <a href="#">/resume</a>
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">root@anirban $</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <article class="intro">
-  <h2>Electronics Undergrad.</h2>
-  <div class="intro-container">
-    <div class="intro-text">
-      <p>That's me. <br>
-         <em>(...or at least who I'm supposed to be.)</em> <br> <br>
- <p>I build things — sometimes to solve problems, sometimes just because I can.</p> 
-<p>
-      Feel free to check out my projects. You can reach me at anirbandas2004@gmail.com. </p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Embedded Systems Engineer</h1>
+            <p class="hero-subtitle">Building robotics, real-time systems & experimental rocketry</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <span>50+</span>
+                <small>Projects</small>
+            </div>
+            <div class="stat">
+                <span>3+</span>
+                <small>Years Exp</small>
+            </div>
+            <div class="stat">
+                <span>10+</span>
+                <small>Technologies</small>
+            </div>
+        </div>
+    </section>
 
-            <p>You can find my work here.
-If you need a reason to reach out: anirbandas2004@gmail.com </p>
-.
-       
-    </div>
-    <div class="intro-image">
-      <img src="me.jpeg" alt="Anirban Das">
-    </div>
-  </div>
-</article>
-  </main>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Embedded engineer from Vadodara, specializing in real-time systems, robotics control, and experimental rocketry. Passionate about crafting efficient firmware for motor drivers, sensor fusion, and data acquisition systems.</p>
+                    <p>Currently building autonomous systems with Arduino, ESP32, and Raspberry Pi. Experienced in C/C++, Python, RTOS, and hardware interfacing.</p>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <span>Profile Photo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>&mdash; 2025 Anirban Das. All rights reserved.</p>
-  </footer>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-category">Rocketry</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Rocket Telemetry System</h3>
+                        <p>Real-time flight data acquisition with ESP32, IMU sensors, and LoRa telemetry. 1km+ range testing achieved.</p>
+                        <div class="project-tech">
+                            <span>ESP32</span>
+                            <span>C++</span>
+                            <span>LoRa</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-category">Robotics</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Autonomous Rover</h3>
+                        <p>ROS2 enabled rover with PID motor control, computer vision obstacle avoidance, and multi-sensor fusion.</p>
+                        <div class="project-tech">
+                            <span>Raspberry Pi</span>
+                            <span>ROS2</span>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-category">Firmware</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Motor Driver Controller</h3>
+                        <p>High-performance BLDC motor driver firmware with FOC algorithm, current sensing, and fault detection.</p>
+                        <div class="project-tech">
+                            <span>STM32</span>
+                            <span>C</span>
+                            <span>FOC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Tools</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Microcontrollers</h3>
+                    <div class="skill-tags">
+                        <span>Arduino</span>
+                        <span>ESP32</span>
+                        <span>STM32</span>
+                        <span>Raspberry Pi</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span>C/C++</span>
+                        <span>Python</span>
+                        <span>Assembly</span>
+                        <span>Bash</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Protocols</h3>
+                    <div class="skill-tags">
+                        <span>I2C</span>
+                        <span>SPI</span>
+                        <span>UART</span>
+                        <span>CAN</span>
+                        <span>LoRa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p>dasux@example.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>GitHub</h3>
+                        <p><a href="https://github.com/Dasux">@Dasux</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Location</h3>
+                        <p>Vadodara, Gujarat</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Dasux. Built with HTML & CSS.</p>
+        </div>
+    </footer>
 </body>
 </html>
