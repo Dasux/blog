@@ -335,7 +335,7 @@ section:nth-child(even) {
 /* Projects */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, 350px);
     gap: 2rem;
 }
 
@@ -353,14 +353,20 @@ section:nth-child(even) {
     box-shadow: 0 0 25px rgba(0, 255, 136, 0.15);
 }
 
+/*background: linear-gradient(135deg, var(--accent), var(--accent-dark)); */
+
 .project-image {
     height: 200px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    background-image: url("assets/test_rig.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 
 .project-category {
     background: rgba(0,0,0,0.7);
