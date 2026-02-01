@@ -19,9 +19,11 @@
 html, body {
     height: 100%;
 }
+
 html {
     height: 100%;
     position: relative;
+    scroll-behavior: smooth;
 }
 
 html::before {
@@ -150,11 +152,41 @@ section:nth-child(even) {
         cover;
 }
 
-.hero-title {
-    max-width: 1000px;          /* controls line length */
-    margin: 0 auto;
-    text-align: center;
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url("assets/dark.jpeg") center right / cover no-repeat;
+  opacity: 0.35;
+  z-index: 0;
+  filter: contrast(1.1);
 }
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(10,10,10,0.55),
+    rgba(10,10,10,0.95)
+  );
+  z-index: 0.5;
+}
+
+/* text layer */
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+
+.hero-title {
+  color: #00ff88;
+  text-shadow:
+    0 0 8px rgba(0,255,136,0.45),
+    0 0 18px rgba(0,255,136,0.25),
+    0 0 32px rgba(0,255,136,0.12);
+}
+
 
 .hero-links {
     display: flex;
@@ -203,17 +235,9 @@ section:nth-child(even) {
         0 0 30px rgba(0, 255, 136, 0.15);
 }
 
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle,
-        transparent 60%,
-        rgba(0, 0, 0, 0.6) 100%
-    );
-    pointer-events: none;
-}
+
+
+
 .hero-links a:hover img {
     opacity: 1;
     transform: translateY(-3px) scale(1.08);
@@ -261,6 +285,7 @@ section:nth-child(even) {
     transition: all 0.3s ease;
     font-size: 1rem;
 }
+
 
 .btn-primary {
     background: linear-gradient(135deg, var(--accent), var(--accent-dark));
@@ -339,6 +364,10 @@ section:nth-child(even) {
     gap: 2rem;
 }
 
+a .project-link{
+  text-decoration: none;
+}
+
 .project-card {
     background: rgba(17, 17, 17, 0.85);
     border-radius: 20px;
@@ -351,6 +380,23 @@ section:nth-child(even) {
 .project-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 0 25px rgba(0, 255, 136, 0.15);
+}
+
+.projects-grid a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.projects-grid a:visited {
+  color: inherit;
+}
+
+.projects-grid a:hover {
+  color: inherit;
+}
+
+.projects-grid a:active {
+  color: inherit;
 }
 
 /*background: linear-gradient(135deg, var(--accent), var(--accent-dark)); */
@@ -377,8 +423,9 @@ section:nth-child(even) {
     font-weight: 600;
 }
 
-.project-content {
+a .project-content {
     padding: 2rem;
+    text-decoration: none !important;
 }
 
 .project-content h3 {
