@@ -155,7 +155,7 @@ section:nth-child(even) {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url("assets/dark.jpeg") center right / cover no-repeat;
+  background: url("assets/background2.jpeg") center right / cover no-repeat;
   opacity: 0.35;
   z-index: 0;
   filter: contrast(1.1);
@@ -345,17 +345,27 @@ section:nth-child(even) {
     margin-bottom: 1.5rem;
 }
 
-.image-placeholder {
+
+.profile-image {
     width: 100%;
     height: 400px;
-    background: linear-gradient(135deg, var(--border), var(--bg-secondary));
+    object-fit: cover;
     border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    font-size: 1.2rem;
+    display: block;
+    transition: 
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
 }
+
+.profile-image:hover {
+    box-shadow: 
+        0 0 20px rgba(0, 255, 180, 0.4),
+        0 0 40px rgba(0, 255, 180, 0.2);
+    transform: translateY(-4px);
+}
+
+
+
 
 /* Projects */
 .projects-grid {
