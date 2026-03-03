@@ -155,7 +155,7 @@ section:nth-child(even) {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url("assets/background2.jpeg") center right / cover no-repeat;
+  background: url("assets/desk.jpeg") center center / contain no-repeat;
   opacity: 0.35;
   z-index: 0;
   filter: contrast(1.1);
